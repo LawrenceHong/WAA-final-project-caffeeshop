@@ -11,24 +11,20 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+	@Autowired
+	CustomSuccessHandler customSuccessHandler;
+
 	@Override
-    protected void configure(HttpSecurity http) throws Exception {
-        http
-            .authorizeRequests()
-                .antMatchers("/", "/home", "/index").permitAll()
-                .anyRequest().authenticated()
-                .and()
-            .formLogin()
-            	.permitAll()
-            	.and()
-            .logout()
-            	.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-            	.logoutSuccessUrl("/")
-                .permitAll();
-    }
+	protected void configure(HttpSecurity http) throws Exception {
+		http.authorizeRequests().antMatchers("/user/**").access("hasRole('USER')").antMatchers("/admin/**")
+				.access("hasRole('ADMIN')").antMatchers("/", "/home", "/index").permitAll().anyRequest().authenticated()
+				.and().formLogin().permitAll().successHandler(customSuccessHandler).and().logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+				.logoutSuccessUrl("/").permitAll();
+	}
 
 	@Autowired
 	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-		auth.inMemoryAuthentication().withUser("super").password("pw").roles("ADMIN");
+		auth.inMemoryAuthentication().withUser("super").password("123").roles("ADMIN");
+		auth.inMemoryAuthentication().withUser("user@gmail.com").password("123").roles("USER");
 	}
 }
