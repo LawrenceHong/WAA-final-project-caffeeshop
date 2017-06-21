@@ -43,7 +43,7 @@ public class OrderController {
 	}
 	@RequestMapping("/profile")
 	public ModelAndView profilePage(Map<String,Object> map) {
-		List<Person> findByEmail = personService.findByEmail("user@qq.com");
+		List<Person> findByEmail = personService.findByEmail("user@gmail.com");
 		map.put("person", findByEmail.get(0));
 		ModelAndView modelAndView = new ModelAndView("profile");
 		return modelAndView;
