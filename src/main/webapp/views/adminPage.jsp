@@ -9,19 +9,21 @@
 <body>
 	products:
 	<br />
-	<a href="/admin/createProduct">Create</a>
-	<a href="/admin/listProducts">List</a>
+	<input type="button"  value="Create" onClick="location='/admin/createProduct'">
+	<br />
+	<input type="button"  value="List" onClick="location='/admin/listProducts'">
 	<br />
 	<br /> 
 	persons:
 	<br />
-	<a href="/admin/createPerson">Create</a>
-	<a href="/admin/listPersons">List</a> 
+	<input type="button"  value="Create" onClick="location='/admin/createPerson'">
+	<br />
+	<input type="button"  value="List" onClick="location='/admin/listPersons'">
 	<br />
 	<br /> 
 	orders:
 	<br />
-	<a href="/admin/listOrder">List orders</a>
+	<input type="button"  value="List orders" onClick="location='/admin/listOrder'">
 	<br />
 	<br />
 	<a href="/login">logout</a>

@@ -7,11 +7,11 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<a href="/user/profile">profile</a>
+	<input type="button"  value="profile" onClick="location='/user/profile'">
 	<br />
 	<br /> orders:
 	<br />
-	<a href="/user/createOrder">Create</a>
+	<input type="button"  value="createOrder" onClick="location='/user/createOrder'">
 	<br />
 	<br />
 	<a href="/login">logout</a>
