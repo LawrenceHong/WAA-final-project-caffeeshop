@@ -1,15 +1,10 @@
 package edu.mum.coffee.domain;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
-import javax.persistence.JoinTable;
-import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
-import javax.persistence.JoinColumn;;
+import javax.persistence.Table;;
 
 @Entity
 @Table(name = "Users")
