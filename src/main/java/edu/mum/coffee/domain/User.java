@@ -7,26 +7,27 @@ import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.JoinTable;
+import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.persistence.JoinColumn;;
 
 @Entity
+@Table(name = "Users")
 @Inheritance(strategy = InheritanceType.JOINED)
 public class User {
 	@Id
 	private String username;
 	private String password;
 	private String role;
-	private boolean enable;
+	private boolean enabled;
 	
-	public boolean isEnable() {
-		return enable;
-	}
-	public void setEnable(boolean enable) {
-		this.enable = enable;
-	}
-
 	
+	public boolean isEnabled() {
+		return enabled;
+	}
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
+	}
 	public String getUsername() {
 		return username;
 	}
