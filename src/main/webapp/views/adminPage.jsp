@@ -20,6 +20,11 @@
 	<br />
 	<input type="button"  value="List" onClick="location='/admin/listPersons'">
 	<br />
+	<br />
+	Users:
+	<br />
+	<input type="button"  value="CreateUser" onClick="location='/admin/createUser'">
+	<br />
 	<br /> 
 	orders:
 	<br />

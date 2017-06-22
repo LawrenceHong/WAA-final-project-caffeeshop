@@ -1,5 +1,8 @@
 package edu.mum.coffee.config;
 
+
+import javax.sql.DataSource;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -13,7 +16,8 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Autowired
 	CustomSuccessHandler customSuccessHandler;
-
+	@Autowired
+	DataSource dataSource;
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests().antMatchers("/user/**").access("hasRole('USER')").antMatchers("/admin/**")
@@ -26,5 +30,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
 		auth.inMemoryAuthentication().withUser("super").password("123").roles("ADMIN");
 		auth.inMemoryAuthentication().withUser("user@gmail.com").password("123").roles("USER");
+		auth.jdbcAuthentication().dataSource(dataSource)
+	    .usersByUsernameQuery(
+	     "select username, password, role from user where username=?")
+	    .authoritiesByUsernameQuery(
+	     "select username, role from user where username=?");
 	}
 }
