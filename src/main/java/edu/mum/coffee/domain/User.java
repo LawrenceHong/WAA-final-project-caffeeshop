@@ -14,12 +14,19 @@ import javax.persistence.JoinColumn;;
 @Inheritance(strategy = InheritanceType.JOINED)
 public class User {
 	@Id
-	@GeneratedValue
-	//@NotNull
 	private String username;
 	private String password;
 	private String role;
+	private boolean enable;
+	
+	public boolean isEnable() {
+		return enable;
+	}
+	public void setEnable(boolean enable) {
+		this.enable = enable;
+	}
 
+	
 	public String getUsername() {
 		return username;
 	}

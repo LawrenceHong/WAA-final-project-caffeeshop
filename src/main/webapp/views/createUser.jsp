@@ -23,6 +23,10 @@
         <td><form:input path="role" /></td>
       </tr>
       <tr>
+        <td><form:label path="enable">enable</form:label></td>
+        <td><form:checkbox path="enable" /></td>
+      </tr>
+      <tr>
         <td colspan="2"><input type="submit" value="saveUser" /></td>
       </tr>
     </table>

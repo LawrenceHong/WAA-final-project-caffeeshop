@@ -32,8 +32,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		auth.inMemoryAuthentication().withUser("user@gmail.com").password("123").roles("USER");
 		auth.jdbcAuthentication().dataSource(dataSource)
 	    .usersByUsernameQuery(
-	     "select username, password, role from user where username=?")
+	     "select username, password, role, enable from user where username=?")
 	    .authoritiesByUsernameQuery(
-	     "select username, role from user where username=?");
+	     "select username, password, role, enable from user where username=?");
 	}
 }
